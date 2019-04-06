@@ -1,0 +1,60 @@
+.field {
+    position: relative;
+}
+
+.field-static {
+    position: absolute;
+    top: 80px;
+    left: 0;
+}
+
+.field-static_background {
+    background: #0B2349;
+}
+
+.field-chipsShell {
+    display: flex;
+    flex-direction: row;
+    border: #210940 solid 3px;
+}
+
+.field-chipsShell_game {
+    z-index: 3;
+}
+
+.column {
+
+}
+
+.point-transparent {
+    pointer-events: none;
+    background: radial-gradient(transparent 30px, rgba(24, 21, 107, 1) 0px);
+    width: 80px;
+    height: 80px;
+}
+
+.field-static_transparent {
+    z-index: 10;
+}
+
+.point {
+    width: 80px;
+    height: 80px;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+}
+
+.point-shell {
+    border-radius: 100%;
+    width: 80%;
+    height: 80%;
+}
+
+.point-null_color {
+    background-color: #ffcba8;
+}
+
+.point_hover:hover {
+    background-color: red;
+}

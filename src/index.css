@@ -1,14 +1,58 @@
-body {
+@font-face {
+  font-family: AndyBold;
+  src: url(./Fonts/AndyBold.ttf);
+}
+
+@font-face {
+  font-family: OpenSansLight;
+  src: url(./Fonts/OpenSansLight.ttf);
+}
+
+@font-face {
+  font-family: OpenSansRegular;
+  src: url(./Fonts/OpenSansRegular.ttf);
+}
+
+@font-face {
+  font-family: OpenSansBold;
+  src: url(./Fonts/OpenSansBold.ttf);
+}
+
+* {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  margin: 0;
+  height: 100%;
+}
+
+body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, #e0fbd4, #e4dbab);
+}
+
+#root {
+  height: 100%;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+.slick-slide {
+  opacity: 0.4;
+}
+
+.slick-center {
+  opacity: 1;
 }

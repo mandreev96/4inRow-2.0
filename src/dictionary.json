@@ -1,0 +1,22 @@
+{
+  "title": {
+    "en": "4 in Row",
+    "ru": "Четыре в ряд"
+  },
+  "enter_name": {
+    "en": "Enter your name",
+    "ru": "Введи свое имя или че там"
+  },
+  "select_color_chip": {
+    "en": "Select color your chip",
+    "ru": "Выбери цвет фишечки, которой будешь ходить"
+  },
+  "select_game_type": {
+    "en": "Select game type",
+    "ru": "Соперничать будешь с ботом или кто еще решил поигрулькать?"
+  },
+  "start_game": {
+    "en": "Start game",
+    "ru": "Пошла игра"
+  }
+}
