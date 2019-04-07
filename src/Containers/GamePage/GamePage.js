@@ -2,9 +2,8 @@ import React, {Component} from 'react';
 import './style.css';
 import Title from "../../Components/Title";
 import Field from "./Components/Field";
-import CheckGameStatus from '../../CheckGameStatus';
-import Services from '../../Services/Services';
 import {Redirect} from "react-router-dom";
+import TopName from "../../Components/TopName";
 
 class GamePage extends Component{
     constructor(props) {
@@ -19,18 +18,21 @@ class GamePage extends Component{
                 [0, 0, 0, 0, 0, 0],
                 [0, 0, 0, 0, 0, 0]
             ],
-            yourMove: true,
+            yourMove: false,
+            rival: null,
         };
     }
 
     dropChip = (column) => {
 
-    }
+    };
 
     render() {
+        console.log(this.props);
+        const {name, color} = this.props.playerData;
         return (
-            <div>
-                <Title text='start_game'/>
+            <div className='wrapPage'>
+                <TopName name={name} color={color}/>
                 <Field field={this.state.field}
                        dropChip={this.dropChip}/>
             </div>

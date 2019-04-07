@@ -8,13 +8,14 @@ import SelectColorPage from "./Containers/SelectColorPage/SelectColorPage";
 import GameModePage from "./Containers/GameModePage/GameModePage";
 import {CSSTransition} from "react-transition-group";
 import EnterNamePage from "./Containers/EnterNamePage/EnterNamePage";
+import TopName from "./Components/TopName";
 
 class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
             name: null,
-            color: 0,
+            color: null,
             id: null,
         }
     }
@@ -33,6 +34,7 @@ class App extends Component {
       });
 
   render() {
+      const {name, color} = this.state;
     return (
         <HashRouter>
             <div className="App">

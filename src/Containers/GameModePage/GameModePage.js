@@ -4,6 +4,8 @@ import LargeButton from "../../Components/LargeButton";
 import ModalContent from "./ModalContent";
 import Services from "../../Services/Services";
 import {GAME_TYPE} from "../../constants";
+import TopName from "../../Components/TopName";
+import WrapTopName from "../../Components/WrapTopName";
 
 export default class GameModePage extends Component {
     constructor(props) {
@@ -48,8 +50,10 @@ export default class GameModePage extends Component {
     };
 
     render() {
+        const {name, color} = this.props.playerData;
         return (
             <div className='wrapPage'>
+                <WrapTopName name={name} color={color}/>
                 <Title text={'select_game_type'}/>
                 <div className='largeButtonsWrap'>
                     <LargeButton onClick={this.openModalSinglePlayer}

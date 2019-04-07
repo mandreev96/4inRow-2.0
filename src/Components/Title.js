@@ -23,17 +23,21 @@ export default class Title extends PureComponent{
         };
     }
     translateOnFocus = () => {
-        if (!this.state.waiting) {
-            this.setState({waiting: true});
-            this.timer = setTimeout(() => this.setState({focus: true}), 3000);
+        if (!this.props.disableAnimation) {
+            if (!this.state.waiting) {
+                this.setState({waiting: true});
+                this.timer = setTimeout(() => this.setState({focus: true}), 3000);
+            }
         }
     };
     returnOriginal = () => {
-        clearTimeout(this.timer);
-        this.setState({
-            focus: false,
-            waiting: false,
-        });
+        if (!this.props.disableAnimation) {
+            clearTimeout(this.timer);
+            this.setState({
+                focus: false,
+                waiting: false,
+            });
+        }
     };
     render() {
         return (

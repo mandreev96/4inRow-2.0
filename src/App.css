@@ -185,6 +185,27 @@
     padding-top: 10px;
 }
 
+.titlePlayerName {
+    text-align: center;
+    font-family: OpenSansLight, sans-serif;
+    font-size: 44px;
+    color: #18156b;
+    margin-right: 16px;
+}
+
+.viewPlayer {
+    display: flex;
+    align-items: center;
+}
+
+.wrapTopName {
+    position: absolute;
+    top: 20px;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
 .mainTitle {
   font-family: AndyBold, "sans-serif";
   font-size: 20vh;
