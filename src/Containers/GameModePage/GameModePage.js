@@ -1,43 +1,65 @@
 import React, {Component} from 'react';
-import {GAME_TYPE} from "../../constants";
 import Title from "../../Components/Title";
 import LargeButton from "../../Components/LargeButton";
-import Modal from 'react-modal';
-import App from "../../App";
+import ModalContent from "./ModalContent";
+import Services from "../../Services/Services";
+import {GAME_TYPE} from "../../constants";
 
 export default class GameModePage extends Component {
     constructor(props) {
         super(props);
         this.state = {
             showModal: false,
+            gameMode: null,
         }
     }
 
-    openModal = () =>
-        this.setState({showModal: true});
+    openModalSinglePlayer = () =>
+        this.setState({showModal: true, gameMode: GAME_TYPE.SINGLE_PLAYER});
+    openModalMultiplayer = () =>
+        this.setState({showModal: true, gameMode: GAME_TYPE.MULTIPLAYER});
     closeModal = () =>
-        this.setState({showModal: false});
+        this.setState({showModal: false, gameMode: null});
+
+    startSinglePlayer = async (difficulty) => {
+        const {name, color} = this.props.playerData;
+        const res = await Services.addToSinglePlayer(name, color, difficulty);
+        this.props.submitPlayerData({id: res.id});
+        console.log(res);
+        console.log(this.props);
+        this.closeModal();
+        this.props.history.push('/game');
+    };
+
+    startMultiplayer = () => {
+
+    };
+
+    selectedGameType = () => {
+        const {gameMode} = this.state;
+        switch (gameMode) {
+            case GAME_TYPE.SINGLE_PLAYER:
+                return this.startSinglePlayer;
+            case GAME_TYPE.MULTIPLAYER:
+                return this.startMultiplayer;
+            default:
+                return this.closeModal;
+        }
+    };
 
     render() {
         return (
             <div className='wrapPage'>
                 <Title text={'select_game_type'}/>
                 <div className='largeButtonsWrap'>
-                    <LargeButton onClick={this.openModal}
-                                 gameType={GAME_TYPE.MULTIPLAYER}/>
-                    <LargeButton onClick={this.openModal}
-                                 gameType={GAME_TYPE.SINGLE_PLAYER}/>
+                    <LargeButton onClick={this.openModalSinglePlayer}
+                                 text={'single player'}/>
+                    <LargeButton onClick={this.openModalMultiplayer}
+                                 text={'multiplayer'}/>
                 </div>
-                <Modal
-                    ariaHideApp={false}
-                    closeTimeoutMS={2000}
-                    isOpen={this.state.showModal}
-                    contentLabel="modal"
-                    onRequestClose={() => this.closeModal()}
-                    style={{width: '50%', height: '50%'}}
-                >
-                    <h2>Add modal content here</h2>
-                </Modal>
+                <ModalContent close={this.closeModal}
+                              state={this.state.showModal}
+                              startGame={this.selectedGameType()}/>
             </div>
         )
     }

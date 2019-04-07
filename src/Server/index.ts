@@ -5,6 +5,7 @@ import cors = require("cors");
 import bodyParser = require("body-parser");
 import {addPlayer} from "./PlayerActions";
 import {gameField} from './FieldActions';
+import EasyBot from './EasyBot';
 
 let app = express();
 let server = http.createServer(app);
@@ -27,11 +28,7 @@ io.on('connection', (socket) => {
     });
 });
 
-app.get('/game', (req, res) => {
-    res.send(gameField);
-});
-
-app.post('/playerInformation', (req, res) => {
+app.post('/addPlayer', async (req, res) => {
     console.log(req.body);
     const player = generatePlayer(req.body);
     addPendingPlayer(player, req.body.gameType);
@@ -42,20 +39,21 @@ function generateID() {
     return `f${(+new Date).toString(Math.floor(Math.random() * (16 - 9)) + 9)}`
 }
 
-function addPendingPlayer(player, gameType) {
-    if (gameType === SINGLE_PLAYER) {
-        pendingSinglePlayer.push(player);
-    }
-    if (gameType === MULTIPLAYER) {
-        pendingMultyPlayer.push(player);
-    }
-}
 
 function generatePlayer(body) {
     return {
         name: body.name,
         color: body.color,
         id: generateID(),
+    }
+}
+
+function addPendingPlayer(player : any, gameType : string) {
+    if (gameType === SINGLE_PLAYER) {
+        pendingSinglePlayer.push(player);
+    }
+    if (gameType === MULTIPLAYER) {
+        pendingMultyPlayer.push(player);
     }
 }
 

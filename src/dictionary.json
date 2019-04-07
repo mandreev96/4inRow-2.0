@@ -18,5 +18,13 @@
   "start_game": {
     "en": "Start game",
     "ru": "Пошла игра"
+  },
+  "select_difficult": {
+    "en": "Who will we play with?",
+    "ru": "С кем будем бороться?"
+  },
+  "loading": {
+    "en": "Loading",
+    "ru": "Загружаем"
   }
 }

@@ -24,20 +24,10 @@ class GamePage extends Component{
     }
 
     dropChip = (column) => {
-        const field = [...this.state.field];
-        const yourMove = !this.state.yourMove;
-        const updatableCell = field[column].lastIndexOf(0);
-        field[column][updatableCell] = (!yourMove) ?
-            1 : 2;
-        this.setState({
-            field,
-            yourMove,
-        });
-        console.log(CheckGameStatus(field));
-    };
+
+    }
 
     render() {
-        console.log(this.context.router)
         return (
             <div>
                 <Title text='start_game'/>

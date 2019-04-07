@@ -15,6 +15,7 @@ class App extends Component {
         this.state = {
             name: null,
             color: 0,
+            id: null,
         }
     }
   componentDidMount() {
